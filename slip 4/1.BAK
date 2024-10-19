@@ -1,0 +1,42 @@
+/* write c++ program to accept worker infromation worker_name, no_of_hours_worked
+,pay_rate and salary. write necesary function to calculate and display
+the salary of worker.
+(use default value for pay_rate). */
+
+#include<iostream.h>
+#include<conio.h>
+
+class worker
+{
+	char wname[20];
+	int hrs;
+	float sal;
+	public:
+		void get(float prate);
+		void put();
+};
+
+void worker::get(float prate=40.50)
+{
+	cout<<"Enter Worker Name : ";
+	cin>>wname;
+	cout<<"Enter No. of Hours work : ";
+	cin>>hrs;
+	sal=hrs*prate;
+};
+
+void worker::put()
+{
+	cout<<"\nWorker Name : "<<wname;
+	cout<<"\nNo Of Hours Work : "<<hrs;
+	cout<<"\n\nTotal Salary  =  " <<sal;
+}
+
+void main()
+{
+worker w;
+clrscr();
+w.get();
+w.put();
+getch();
+}

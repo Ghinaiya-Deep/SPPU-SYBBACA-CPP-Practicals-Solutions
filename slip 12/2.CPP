@@ -1,0 +1,81 @@
+/* b)	Create a C++ class Weight with data members kilogram, gram. Write a C++ program using operator overloading to perform following functions:
+i.	To accept weight.
+ii.	To display weight in kilogram and gram format. iii. Overload +— operator to add two weights.
+iv. Overload == operator to check equality of two weights.   */
+
+
+
+#include<iostream.h>
+#include<conio.h>
+
+class weight
+{
+	int kilogram,gram;
+	public:
+		void getdata()
+		{
+			cout<<"\nEnter kilogram : ";
+			cin>>kilogram;
+			cout<<"\nEnter gram : ";
+			cin>>gram;
+		}
+
+		void display()
+		{
+			cout<<"\nAddition is : ";
+			cout<<kilogram<<"."<<gram;
+		}
+
+		void display2()
+		{
+			cout<<"\n"<<kilogram<<"."<<gram;
+		}
+
+		weight operator+=(weight &d)
+		{
+			weight t;
+			t.kilogram=d.kilogram+kilogram;
+			t.gram=d.gram+gram;
+			return t;
+		}
+
+		int operator==(weight &d)
+		{
+			if(kilogram==d.kilogram || gram==d.gram)
+			{
+				return 1;
+			}
+			else
+			{
+			return 0;
+			}
+		}
+};
+
+void main()
+{
+	weight c1,c2,c3,c4,c5;
+	clrscr();
+	c1.getdata();
+	c2.getdata();
+	c3=c1+=c2;
+	c3.display();
+	c4.getdata();
+	c5.getdata();
+
+	if(c4==c5)
+	{
+		cout<<"\n";
+		c4.display2();
+		c5.display2();
+		cout<<"\nBoth are same";
+	}
+	else
+	{
+		cout<<"\n";
+		c5.display2();
+		c4.display2();
+		cout<<"\nBoth are not same";
+	}
+	getch();
+	}

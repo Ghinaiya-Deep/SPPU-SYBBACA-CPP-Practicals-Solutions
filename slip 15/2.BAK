@@ -1,0 +1,66 @@
+#include<iostream.h>
+#include<conio.h>
+#include<string.h>
+
+class seller
+{
+	char sname[20],pname[20];
+	int squantity,target;
+	float commission;
+	public:
+		void get()
+		{
+			cout<<"\nEnter salesman name : ";
+			cin>>sname;
+
+			cout<<"\nEnter product name : ";
+			cin>>pname;
+
+			cout<<"\nEnter sales quantity : ";
+			cin>>squantity;
+
+			cout<<"\nEnter target : ";
+			cin>>target;
+		}
+
+		void put()
+		{
+			cout<<"\n\nSalesman name : "<<sname;
+			cout<<"\nProduct name : "<<pname;
+			cout<<"\nSales quantity : "<<squantity;
+			cout<<"\nTarget : "<<target;
+			commission=0;
+			if(squantity>target)
+			{
+				commission=commission+((squantity-target)*0.25)+(target*0.10);
+			}
+
+			else if(target==squantity)
+			{
+				commission=commission+(target*0.10);
+			}
+			else
+			{
+				commission=0;
+			}
+			cout<<"\nCommission : "<<commission;
+		}
+};
+
+void main()
+{
+	seller sman[10];
+	int i,n;
+	clrscr();
+	cout<<"\nEnter how many salesman : ";
+	cin>>n;
+	for(i=0;i<n;i++)
+	{
+	sman[i].get();
+	}
+	for(i=0;i<n;i++)
+	{
+	sman[i].put();
+	}
+	getch();
+}

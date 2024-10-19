@@ -1,0 +1,73 @@
+/* b)	Write a C++ program to create a class Movie with data members M Name, Release Year, Director Name and Budget. (Use File Handling) Write necessary member functions to:
+i. Accept details for 'n' Movies from user and store it in a file "Movie.txt"  
+ii. Display Movie details from a file.
+iii. Count the number of objects stored in a file.  */
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<fstream.h>
+
+class movie
+{
+	public:
+		int year;
+		char mname[20];
+		char dname[20];
+		int budget;
+	public:
+		void accept()
+		{
+			cout<<"\n\nEnter Movie Name : ";
+			cin>>mname;
+			cout<<"Enter Release Year : ";
+			cin>>year;
+			cout<<"Enter Director Name : ";
+			cin>>dname;
+			cout<<"Enter Budget : ";
+			cin>>budget;
+		}
+
+		void display()
+		{
+			cout<<"\n\nThe Movie Name : "<<mname<<endl;
+			cout<<"The Release Year : "<<year<<endl;
+			cout<<"The Director Name : "<<dname<<endl;
+			cout<<"The Budget : "<<budget<<endl;
+		}
+};
+
+
+void main()
+{
+movie m[5];
+int n,i;
+clrscr();
+fstream file;
+file.open("movie.txt",ios::in | ios::out);
+
+cout<<"\nEnter the no of records you want to accept : ";
+cin>>n;
+for(i=0;i<n;i++)
+{
+m[i].accept();
+file.write((char *) &m[i],sizeof(m[i]));
+}
+cout<<"\nDetils of movie from file :\n ";
+for(i=0;i<n;i++)
+{
+file.read((char *) &m[i],sizeof(m[i]));
+m[i].display();
+}
+file.close();
+getch();
+}
+
+
+
+
+
+
+
+
+
